@@ -1,0 +1,127 @@
+ScreenManager:
+    LoginScreen:
+    AccountScreen:
+    AddAccountScreen:
+
+<LoginScreen>:
+    title: "Login system"
+
+    identification: identification
+    password: password
+
+    name: "LoginPage"
+    FloatLayout:
+        size: root.width, root.height
+
+        Label:
+            text: "Login Page"
+            font_size: 45
+            size_hint: 0.2, 0.2
+            pos_hint: {"x": 0.4, "y": 0.8}
+
+        Label:
+            text: "Enter ID : "
+            font_size: 30
+            size_hint: 0.2, 0.07
+            pos_hint: {"x": 0.28, "y": 0.65}
+
+        TextInput:
+            id: identification
+            text: ""
+            font_size: 30
+            size_hint: 0.25, 0.07
+            pos_hint: {"x": 0.48, "y": 0.65}
+
+        Label:
+            text: "Enter Password : "
+            font_size: 30
+            size_hint: 0.2, 0.07
+            pos_hint: {"x": 0.28, "y": 0.55}
+
+        TextInput:
+            id: password
+            text: ""
+            font_size: 30
+            size_hint: 0.25, 0.07
+            pos_hint: {"x": 0.48, "y": 0.55}
+
+        Button:
+            id: loginButton
+            text:"Login"
+            size_hint: 0.3, 0.1
+            pos_hint: {"x": 0.35, "y": 0.3}
+            on_press: root.onLoginClick()
+
+        Button:
+            id: AddAccount
+            text:"Don't have an account?"
+            color: 10, 10, 100
+            font_size: 20
+            size_hint: 0.2, 0.05
+            pos_hint: {"x": 0.4, "y": 0.25}
+            on_press: app.root.current="AddAccountPage"
+
+<AccountScreen>:
+    name: "AccountPage"
+    FloatLayout:
+        size: root.width, root.height
+
+        Image:
+            source: 'avatar.png'
+            size_hint: 0.15, 0.15
+            pos_hint: {"x": 0.42, "y": 0.7}
+
+        Label:
+            text: "You are logged in !!"
+
+        Button:
+            id: loginButton
+            text:"Back to Login page"
+            size_hint: 0.3, 0.1
+            pos_hint: {"x": 0.35, "y": 0.3}
+            on_press: app.root.current="LoginPage"
+
+<AddAccountScreen>:
+    name: "AddAccountPage"
+
+    FloatLayout:
+        size: root.width, root.height
+
+        Label:
+            text: "Login Page"
+            font_size: 45
+            size_hint: 0.2, 0.2
+            pos_hint: {"x": 0.4, "y": 0.8}
+
+        Label:
+            text: "Enter ID : "
+            font_size: 30
+            size_hint: 0.2, 0.07
+            pos_hint: {"x": 0.28, "y": 0.65}
+
+        TextInput:
+            id: newIdentification
+            text: ""
+            font_size: 30
+            size_hint: 0.25, 0.07
+            pos_hint: {"x": 0.48, "y": 0.65}
+
+        Label:
+            text: "Enter Password : "
+            font_size: 30
+            size_hint: 0.2, 0.07
+            pos_hint: {"x": 0.28, "y": 0.55}
+
+        TextInput:
+            id: newPassword
+            text: ""
+            font_size: 30
+            size_hint: 0.25, 0.07
+            pos_hint: {"x": 0.48, "y": 0.55}
+
+        Button:
+            id: addAccountButton
+            text:"Add account"
+            size_hint: 0.3, 0.1
+            pos_hint: {"x": 0.35, "y": 0.3}
+            on_press: root.onAddAccountClick()
