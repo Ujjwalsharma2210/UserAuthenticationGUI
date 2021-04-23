@@ -15,50 +15,50 @@ ScreenManager:
 
         Label:
             text: "Login Page"
-            font_size: 45
+            font_size: 48
             size_hint: 0.2, 0.2
-            pos_hint: {"x": 0.4, "y": 0.8}
+            pos_hint: {"center_x": 0.5, "center_y": 0.9}
 
         Label:
-            text: "Enter ID : "
-            font_size: 30
-            size_hint: 0.2, 0.07
-            pos_hint: {"x": 0.28, "y": 0.65}
+            text: "Username : "
+            font_size: 32
+            size_hint: 0.2, 0.04
+            pos_hint: {"x": 0.26, "y": 0.65}
 
         TextInput:
             id: identification
             text: ""
-            font_size: 30
-            size_hint: 0.25, 0.07
-            pos_hint: {"x": 0.48, "y": 0.65}
+            font_size: 32
+            size_hint: 0.28, 0.04
+            pos_hint: {"x": 0.50, "y": 0.65}
 
         Label:
-            text: "Enter Password : "
-            font_size: 30
-            size_hint: 0.2, 0.07
-            pos_hint: {"x": 0.28, "y": 0.55}
+            text: "Password : "
+            font_size: 32
+            size_hint: 0.2, 0.04
+            pos_hint: {"x": 0.26, "y": 0.55}
 
         TextInput:
             id: password
             text: ""
-            font_size: 30
-            size_hint: 0.25, 0.07
-            pos_hint: {"x": 0.48, "y": 0.55}
+            font_size: 32
+            size_hint: 0.28, 0.04
+            pos_hint: {"x": 0.50, "y": 0.55}
 
         Button:
             id: loginButton
             text:"Login"
-            size_hint: 0.3, 0.1
-            pos_hint: {"x": 0.35, "y": 0.3}
+            size_hint: 0.3, 0.075
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
             on_press: root.onLoginClick()
 
         Button:
             id: AddAccount
-            text:"Don't have an account?"
+            text:"Create account."
             color: 10, 10, 100
             font_size: 20
-            size_hint: 0.2, 0.05
-            pos_hint: {"x": 0.4, "y": 0.25}
+            size_hint: 0.3, 0.05
+            pos_hint: {"center_x": 0.5, "center_y": 0.25}
             on_press: app.root.current="AddAccountPage"
 
 <AccountScreen>:
@@ -76,52 +76,55 @@ ScreenManager:
 
         Button:
             id: loginButton
-            text:"Back to Login page"
+            text:"Logout"
             size_hint: 0.3, 0.1
             pos_hint: {"x": 0.35, "y": 0.3}
-            on_press: app.root.current="LoginPage"
+            on_press: root.logOut()
 
 <AddAccountScreen>:
     name: "AddAccountPage"
+
+    newIdentification: newIdentification
+    newPassword: newPassword
 
     FloatLayout:
         size: root.width, root.height
 
         Label:
-            text: "Login Page"
+            text: "Create Account"
             font_size: 45
             size_hint: 0.2, 0.2
-            pos_hint: {"x": 0.4, "y": 0.8}
+            pos_hint: {"center_x": 0.5, "y": 0.8}
 
         Label:
-            text: "Enter ID : "
-            font_size: 30
-            size_hint: 0.2, 0.07
-            pos_hint: {"x": 0.28, "y": 0.65}
+            text: "Username : "
+            font_size: 32
+            size_hint: 0.2, 0.04
+            pos_hint: {"x": 0.26, "y": 0.65}
 
         TextInput:
             id: newIdentification
             text: ""
-            font_size: 30
-            size_hint: 0.25, 0.07
-            pos_hint: {"x": 0.48, "y": 0.65}
+            font_size: 32
+            size_hint: 0.28, 0.04
+            pos_hint: {"x": 0.50, "y": 0.65}
 
         Label:
-            text: "Enter Password : "
-            font_size: 30
-            size_hint: 0.2, 0.07
-            pos_hint: {"x": 0.28, "y": 0.55}
+            text: "Password : "
+            font_size: 32
+            size_hint: 0.2, 0.04
+            pos_hint: {"x": 0.26, "y": 0.55}
 
         TextInput:
             id: newPassword
             text: ""
-            font_size: 30
-            size_hint: 0.25, 0.07
-            pos_hint: {"x": 0.48, "y": 0.55}
+            font_size: 32
+            size_hint: 0.28, 0.04
+            pos_hint: {"x": 0.50, "y": 0.55}
 
         Button:
             id: addAccountButton
-            text:"Add account"
-            size_hint: 0.3, 0.1
-            pos_hint: {"x": 0.35, "y": 0.3}
+            text:"Done"
+            size_hint: 0.3, 0.075
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
             on_press: root.onAddAccountClick()
