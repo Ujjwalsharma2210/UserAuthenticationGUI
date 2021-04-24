@@ -19,6 +19,20 @@ from kivy.properties import ObjectProperty
 
 import json
 
+import uuid
+import hashlib
+
+
+def hash_str(strToBeHashed):
+	# uuid is used to generate a random number
+	bubb = uuid.uuid4().hex
+	return hashlib.sha256(bubb.encode() + strToBeHashed.encode()).hexdigest() + ')' + bubb
+
+
+def check_str(hashed_str, user_str):
+	password, bubb = hashed_str.split(')')
+	return password == hashlib.sha256(bubb.encode() + user_str.encode()).hexdigest()
+
 
 def write_json(data, filename='credentials.json'):
 	with open(filename, 'w') as f:
@@ -43,11 +57,27 @@ class LoginScreen(Screen):
 		isUser = True
 
 		while isUser:
+			# for user in data['userAccounts']:
+			# 	if user['username'] == username:
+			# 		print("____User Found____")
+			#
+			# 		if user['password'] == password:
+			# 			print("Correct password entered!!")
+			# 			self.logIn()
+			# 			break
+			# 		else:
+			# 			print("Incorrect username or password!!")
+			# 	else:
+			# 		continue
+			#
+			# isUser = False
+			# break
+
 			for user in data['userAccounts']:
-				if user['username'] == username:
+				if check_str(user['username'], username):
 					print("____User Found____")
 
-					if user['password'] == password:
+					if check_str(user['password'], password):
 						print("Correct password entered!!")
 						self.logIn()
 						break
@@ -80,12 +110,14 @@ class AddAccountScreen(Screen):
 
 			temp = data['userAccounts']
 
-			y = {"username": username,
-			     "password": password}
+			y = {"username": hash_str(username),
+			     "password": hash_str(password)}
 
 			temp.append(y)
 
 		write_json(data)
+
+		print("New user added.")
 
 		self.newIdentification.text = ""
 		self.newPassword.text = ""
